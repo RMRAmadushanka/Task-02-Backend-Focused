@@ -1,0 +1,23 @@
+{
+  "name": "task-02-backend-focused",
+  "version": "1.0.0",
+  "description": "Task 02: Backend Focused – Scrapper (Study Only)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RMRAmadushanka/Task-02-Backend-Focused.git"
+  },
+  "author": "Rolan Rathnayaka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RMRAmadushanka/Task-02-Backend-Focused/issues"
+  },
+  "homepage": "https://github.com/RMRAmadushanka/Task-02-Backend-Focused#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "puppeteer": "^23.5.3"
+  }
+}
