@@ -9,3 +9,4 @@ const scrapeIkman = async (keyword) => {
     const page = await browser.newPage();
 
 }
+module.exports = scrapeIkman;
