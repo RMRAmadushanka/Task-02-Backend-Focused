@@ -25,7 +25,47 @@ const scrapeIkman = async (keyword) => {
         throw new Error('Failed to load search results');
     }
 
+        // Scrape the data
+        const listings = await page.evaluate(() => {
+            const results = [];
+            const items = document.querySelectorAll('.title--3yncE'); 
+        
+            items.forEach(item => {
+                const title = item ? item.innerText : null;
+                // Find price within the same parent
+                const priceElement = item.closest('div').querySelector('.price--3SnqI span'); 
+                // Find location within the same parent
+                const locationElement = item.closest('div').querySelector('.description--2-ez3');
+                // Find date within the same parent
+                const dateElement = item.closest('div').querySelector('.updated-time--1DbCk span'); 
+                // Get the parent anchor tag for the listing URL
+                const urlElement = item.closest('a'); 
     
+                // Extract price text
+                const price = priceElement ? priceElement.innerText : null;
+                // Extract location text
+                const location = locationElement ? locationElement.innerText : null; 
+                // Extract date posted
+                const datePosted = dateElement ? dateElement.innerText : null; 
+                // Extract URL from the href attribute
+                const listingUrl = urlElement ? urlElement.href : null; 
+    
+                // Push each listing's data into the results
+                results.push({
+                    title,
+                    price,
+                    location,
+                    datePosted,
+                    listingUrl
+                });
+            });
+    
+            return results;
+
+        })
+
+    await browser.close();
+    return listings;
 
 }
 module.exports = scrapeIkman;
